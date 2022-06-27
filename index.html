@@ -33,8 +33,8 @@
   <!-- <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet"> -->
   <!-- <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"> -->
   <!-- <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet"> -->
-  <!-- <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet"> -->
-  <!-- <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -543,15 +543,18 @@
           </div>
         </div>
       </div>
-
-      <form id="submit-form" action="" role="form" class="php-email-form mt-4">
+      <!-- pattern="[a-zA-Z]{3,}" -->
+      <!-- jango -->
+      <form id="submit-form" method="post" role="form" name="google-sheet" class="php-email-form mt-4">
         <div class="row">
           <div class="col-md-6 form-group">
-            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" pattern="[a-zA-Z]{3,}"
+            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
               title="Minimum 5 letters" required>
+            <span id="name-span" style="color:red ;"></span>
           </div>
           <div class="col-md-6 form-group mt-3 mt-md-0">
             <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+
           </div>
         </div>
         <div class="form-group mt-3">
@@ -579,6 +582,39 @@
 
   </div>
 
+  <script>
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyxrkBLcP22sAzrQZI_GAh8R6Jywu1E8JcW4MyjME66_g1Gi2xOGjAX0RLX744qCCCmkQ/exec'
+    const form = document.forms['google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+
+  <!-- <script>
+    $("#submit-form").submit((e) => {
+      e.preventDefault()
+      $.ajax({
+        url: "https://script.google.com/macros/s/AKfycbxKSfZsIxEGKAKaE1CNEugR2b2MjnViU06rO6rhlfDgTXxsjambGSnSxhmmKYgF6bljyw/exec",
+        data: $("#submit-form").serialize(),
+        method: "post",
+        success: function (response) {
+          alert("Form submitted successfully")
+          window.location.reload()
+          //window.location.href="https://google.com"
+        },
+        error: function (err) {
+          alert("Something Error")
+
+        }
+      })
+    })
+  </script> -->
   <!-- Vendor JS Files -->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -599,25 +635,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <script>
-    $("#submit-form").submit((e) => {
-      e.preventDefault()
-      $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbzHOnJLks8sIN6vCD34iJhUPmzc_nhdsiXLmtaXpRNL-p380LBqX3rpIG4mWKoLUrnrxA/exec",
-        data: $("#submit-form").serialize(),
-        method: "post",
-        success: function (response) {
-          alert("Form submitted successfully")
-          window.location.reload()
-          //window.location.href="https://google.com"
-        },
-        error: function (err) {
-          alert("Something Error")
 
-        }
-      })
-    })
-  </script>
 
 </body>
 

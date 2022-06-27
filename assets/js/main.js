@@ -1,3 +1,16 @@
+// function nameCheck() {
+//   var name = document.getElementById("name").value;
+//   if (name.length == 0) {
+//     var nameEror = (document.getElementById("name-span").innerHTML =
+//       "Name empty");
+//     return false;
+//   }
+
+//   var nameEror = (document.getElementById("name-span").innerHTML =
+//     " ");
+//   return true;
+// }
+
 (function () {
   "use strict";
 
