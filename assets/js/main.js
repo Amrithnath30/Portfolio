@@ -1,16 +1,85 @@
-// function nameCheck() {
-//   var name = document.getElementById("name").value;
-//   if (name.length == 0) {
-//     var nameEror = (document.getElementById("name-span").innerHTML =
-//       "Name empty");
-//     return false;
-//   }
+var nameError = document.getElementById("Name-span");
+var emailError = document.getElementById("email-span");
+var subjectError = document.getElementById("subject-span");
+var messageError = document.getElementById("message-span");
+var buttonError = document.getElementById("button-span");
+function validateName() {
+  var name = document.getElementById("name").value;
+  if (name.length == 0) {
+    nameError.innerHTML = "name is required";
+    return false;
+  }
+  if (!name.match(/^[A-Za-z]*\s{1}[A-Za-z]*$/)) {
+    nameError.innerHTML = "Write full name";
+    return false;
+  }
+  nameError.innerHTML = '<i class="fa-solid fa-user-check"></i>';
 
-//   var nameEror = (document.getElementById("name-span").innerHTML =
-//     " ");
-//   return true;
-// }
+  return true;
+}
 
+function validateEmail() {
+  var email = document.getElementById("email").value;
+  if (email.length == 0) {
+    emailError.innerHTML = "email is required";
+    return false;
+  }
+  if (!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)) {
+    emailError.innerHTML = "Email invalid";
+    return false;
+  }
+  emailError.innerHTML = '<i class="fa-solid fa-envelope-circle-check"></i>';
+
+  return true;
+}
+function validateSubject() {
+  var subject = document.getElementById("subject").value;
+  if (subject.length == 0) {
+    subjectError.innerHTML = "subject is required";
+    return false;
+  }
+  if (!subject.match(/^[A-Za-z\._\-[0-9]{5,}$/)) {
+    subjectError.innerHTML = "Minimum 5 letters";
+    return false;
+  }
+  subjectError.innerHTML = '<i class="fa-solid fa-square-check"></i>';
+
+  return true;
+}
+function validateMessage() {
+  var message = document.getElementById("Message-id").value;
+  if (message.length == 0) {
+    messageError.innerHTML = "message is required";
+    return false;
+  }
+  if (!message.match(/^[A-Za-z\._\-[0-9]$/)) {
+    var required = 30;
+    var left = required - message.length;
+    if (left >= 0) {
+      messageError.innerHTML = left + "More character required";
+      return false;
+    }
+  }
+  messageError.innerHTML =
+    '<i class="fa-solid fa-hexagon-check" style="";></i>';
+
+  return true;
+}
+function validateForm() {
+  if (
+    !validateName() ||
+    !validateEmail() ||
+    !validateSubject() ||
+    !validateMessage()
+  ) {
+    buttonError.style.display = "block";
+    buttonError.innerHTML = "please fix errors";
+    setTimeout(function () {
+      buttonError.style.display = "none";
+    }, 2000);
+    return false;
+  }
+}
 (function () {
   "use strict";
 

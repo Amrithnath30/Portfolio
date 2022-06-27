@@ -785,12 +785,25 @@ section .container {
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
-#name-span {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  margin-left: 1em;
-  position: absolute;
-}
+.php-email-form span {
+  font-family: "Poppins", sans-serif;
 
+  margin-left: 0.5em;
+  /* margin-top: -1.7em; */
+  /* position: absolute; */
+  color: #ed3c0d;
+  overflow: hidden;
+}
+.form-group {
+  /* display: flex; */
+  /* justify-content: space-evenly; */
+  align-items: center;
+}
+.php-email-form span i {
+  color: rgb(2, 48, 71);
+
+  margin-left: 1em;
+}
 .contact .info-box {
   color: #444444;
   padding: 20px;
