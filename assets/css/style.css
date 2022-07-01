@@ -987,3 +987,8 @@ section .container {
 .credits a:hover {
   color: #fff;
 }
+@media (max-width: 335px) {
+  .contact-mail {
+    display: none;
+  }
+}
